@@ -95,7 +95,13 @@ const Login = () => {
 
       login(response.user);
       toast.success(response.message || "Logged in successfully");
-      navigate("/");
+      
+      // Redirect based on role
+      if (response.user.role?.toLowerCase() === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login failed:", error);
     }
