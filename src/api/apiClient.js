@@ -2,11 +2,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 // Create axios instance
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
+  baseURL: API_BASE_URL,
   headers: { "Content-Type": "application/json" },
   withCredentials: true, // needed for httpOnly refresh token cookie
-  timeout: 10000,
+  timeout: 15000,
 });
 
 //Attach access token to every request
